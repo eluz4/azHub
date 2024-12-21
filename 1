@@ -1,0 +1,73 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "aztest", HidePremium = false, IntroEnabled = false, SaveConfig = true, ConfigFolder = "test"})
+
+
+--values
+
+_G.autoTap = true
+_G.autoRebirth = true
+_G.autoEvent = true
+
+--functions
+function autoTap()
+    while _G.autoTap == true do
+        game:GetService("ReplicatedStorage").Events.RemoteEvents.ClickEvent:FireServer("Tap")
+        wait(0.00000000000000000001)
+     end
+	end
+
+function autoRebirth()
+	while _G.autoRebirth do
+		game:GetService("ReplicatedStorage").Events.RemoteFunctions.RebirthFunction:InvokeServer("Rebirth","1")
+		wait(0.05)
+	 end
+	end
+		
+function autoEvent()	
+	while _G.autoEvent do
+		game:GetService("ReplicatedStorage").Events.RemoteEvents.TrickOfTreatEvent:FireServer("Claim",2)
+		wait(0.00000000000000000001)
+	 end
+	end
+		
+	
+	
+-- tabs
+
+local Tab = Window:MakeTab({
+	Name = "farm",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+--toggles
+
+Tab:AddToggle({
+	Name = "AUTO TAP",
+	Default = false,
+	Callback = function(Value)
+		_G.autoTap = Value
+        autoTap()
+	end 
+    
+})
+
+Tab:AddToggle({
+	Name = "AUTO REBIRTH",
+	Default = false,
+	Callback = function(Value)
+		_G.autoRebirth = Value
+        autoRebirth()
+	end 
+    
+})
+
+Tab:AddToggle({
+	Name = "AUTO EVENT",
+	Default = false,
+	Callback = function(Value)
+		_G.autoEvent = Value
+        autoEvent()
+	end 
+    
+})
