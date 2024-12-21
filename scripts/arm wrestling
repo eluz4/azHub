@@ -1,0 +1,77 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Arm Wrestling Sim!", HidePremium = false, IntroEnabled = false, SaveConfig = true, ConfigFolder = "test"})
+
+
+
+_G.autoTap = true 
+_G.autoDecline = true
+_G.autoEquip = true
+
+ 
+
+
+function autoTap()
+    while _G.autoTap == true do
+        game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onClick:FireServer()
+        wait(0.00000000000000000001)
+     end
+	end
+
+function autoDecline() 
+    while _G.autoDecline == true do
+        game:GetService("ReplicatedStorage").Packages.Knit.Services.TradingService.RF.declineTradeRequest:InvokeServer(game:GetService("Players").Darcy6910)
+        wait(0.01)
+     end
+    end 
+
+function autoEquip()
+    while _G.autoEquip == true do
+        game:GetService("ReplicatedStorage").Packages.Knit.Services.PetService.RF.equipBest:InvokeServer(game:GetService("Players").LocalPlayer)
+        wait(0.1)
+     end
+    end 
+
+
+    local Tab = Window:MakeTab({
+        Name = "farm",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+
+    Tab:AddToggle({
+        Name = "AUTO TAP",
+        Default = false,
+        Callback = function(Value)
+            _G.autoTap = Value
+            autoTap()
+        end 
+        
+    })
+
+
+    local Tab = Window:MakeTab({
+        Name = "misc",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+ 
+    
+    Tab:AddToggle({
+        Name = "decline trades",
+        Default = false,
+        Callback = function(Value)
+            _G.autoDecline = Value
+            autoDecline()
+        end 
+        
+    })
+
+    Tab:AddToggle({
+        Name = "equip best",
+        Default = false,
+        Callback = function(Value)
+            _G.autoEquip = Value
+            autoEquip()
+        end 
+        
+    })
