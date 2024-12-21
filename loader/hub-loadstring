@@ -2,6 +2,6 @@
 
 if game.PlaceId == 17295102749 then
 
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/Az-ule/test/refs/heads/main/scripts/Clicking%20Universe?token=GHSAT0AAAAAAC4HOL6PDU3CYS3E2EQTBX3YZ3GMBFA'))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/eluz4/azHub/refs/heads/main/scripts/Clicking%20Universe'))()
 
 end
