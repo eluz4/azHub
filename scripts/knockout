@@ -4,7 +4,7 @@ local Window = Rayfield:CreateWindow({
     Name = "ion even know fr",
     Icon = 0,
     LoadingTitle = "AzHUB",
-    LoadingSubtitle = "by uhzule on discord",
+    LoadingSubtitle = "by eluza",
     Theme = "Default",
 
     DisableRayfieldPrompts = true,
