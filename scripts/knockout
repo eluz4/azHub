@@ -1,0 +1,110 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "ion even know fr",
+    Icon = 0,
+    LoadingTitle = "AzHUB",
+    LoadingSubtitle = "by uhzule on discord",
+    Theme = "Default",
+
+    DisableRayfieldPrompts = true,
+    DisableBuildWarnings = false,
+
+    ConfigurationSaving = {
+       Enabled = false,
+       FolderName = nil,
+       FileName = "azHub"
+    },
+
+    Discord = {
+       Enabled = false,
+       Invite = "noinvitelink",
+       RememberJoins = true
+    },
+
+    KeySystem = true,
+    KeySettings = {
+       Title = "skibidi key",
+       Subtitle = "Key System",
+       Note = "No method of obtaining the key is provided",
+       FileName = "Key",
+       SaveKey = true,
+       GrabKeyFromSite = false,
+       Key = {"skibididdy"}
+    }
+})
+
+local Tab = Window:CreateTab("Main", 4483362458)
+local Section = Tab:CreateSection("Main stuff")
+
+Rayfield:Notify({
+    Title = "ty shi",
+    Content = "tt .azule",
+    Duration = 6.5,
+    Image = 4483362458,
+})
+
+local strengthValue = 0
+
+local function fireTrainEvent()
+    local args = {
+        [1] = strengthValue
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("Event"):WaitForChild("Train"):FireServer(unpack(args))
+end
+
+local Input = Tab:CreateInput({
+    Name = "Strength",
+    CurrentValue = "",
+    PlaceholderText = "Enter Strength Value",
+    RemoveTextAfterFocusLost = true,
+    Flag = "Input1",
+    Callback = function(Text)
+        local numberInput = tonumber(Text)
+        if numberInput then
+            strengthValue = numberInput
+            print("Strength set to: " .. strengthValue)
+            fireTrainEvent()
+        else
+            print("Please enter a valid number.")
+        end
+    end,
+})
+
+local winsValue = 5
+
+local function fireWinGainEvent()
+    local args = {
+        [1] = winsValue
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("Event"):WaitForChild("WinGain"):FireServer(unpack(args))
+end
+
+local Input = Tab:CreateInput({
+    Name = "Wins",
+    CurrentValue = "",
+    PlaceholderText = "Enter Wins Value",
+    RemoveTextAfterFocusLost = false,
+    Flag = "Input1",
+    Callback = function(Text)
+        local numberInput = tonumber(Text)
+        if numberInput then
+            winsValue = numberInput
+            print("Wins set to: " .. winsValue)
+            fireWinGainEvent()
+        else
+            print("Please enter a valid number.")
+        end
+    end,
+})
+
+local selectedPower = "Name of power"
+local powerValue = 0
+
+local function buyPowerEvent()
+    local args = {
+        [1] = selectedPower,
+        [2] = powerValue
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("Event"):WaitForChild("BuyPower"):FireServer(unpack(args))
+end
