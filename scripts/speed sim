@@ -1,0 +1,148 @@
+-- set auto collect to wherever you are, eg. "City" is world 1
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Speed Sim", HidePremium = false, IntroEnabled = false, SaveConfig = true, ConfigFolder = "test"})
+
+
+--values
+
+_G.autoTap = true
+_G.autoRebirth = true
+_G.autoEvent = true
+_G.autoXp = true
+_G.autoBlue = true
+_G.autoOrange = true 
+_G.autoOpenDesert = true
+
+--functions
+function autoTap()
+    while _G.autoTap == true do
+      game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Red Orb","Desert")
+        wait(0.00000000000000000001)
+     end
+	end
+
+function autoRebirth()
+	while _G.autoRebirth do
+		game:GetService("ReplicatedStorage").rEvents.rebirthEvent:FireServer("rebirthRequest")
+		wait(0.05)
+	 end
+	end
+		
+function autoEvent()	
+	while _G.autoEvent do
+		game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Gem","Desert") 
+		wait(0.00000000000000000001) 
+
+	 end
+	end
+		
+ function autoXp()	
+	while _G.autoXp do
+		game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Yellow Orb","Desert") 
+		wait(0.00000000000000000001) 
+
+	 end
+	end  
+
+function autoOrange()	
+	while _G.autoOrange do
+		game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Orange Orb","Desert") 
+		wait(0.00000000000000000001) 
+
+	 end
+	end    
+
+function autoBlue()	
+	while _G.autoBlue do
+		game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Blue Orb","Desert") 
+		wait(0.00000000000000000001) 
+
+	 end
+	end                           
+	
+function autoOpenDesert()
+    while _G.autoOpenDesert == true do
+      game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer("openCrystal","Electro Crystal")
+        wait(0.00000000000000000001)
+     end
+	end	
+-- tabs
+
+local Tab = Window:MakeTab({
+	Name = "farm",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+--toggles
+
+Tab:AddToggle({
+	Name = "AUTO COLLECT RED",
+	Default = false,
+	Callback = function(Value)
+		_G.autoTap = Value
+        autoTap()
+	end 
+    
+})
+
+Tab:AddToggle({
+	Name = "AUTO COLLECT ORANGE",
+	Default = false,
+	Callback = function(Value)
+		_G.autoOrange = Value
+        autoOrange()
+	end 
+    
+})
+
+Tab:AddToggle({
+	Name = "AUTO COLLECT BLUE",
+	Default = false,
+	Callback = function(Value)
+		_G.autoBlue = Value
+        autoBlue()
+	end 
+    
+})
+
+Tab:AddToggle({
+	Name = "AUTO REBIRTH",
+	Default = false,
+	Callback = function(Value)
+		_G.autoRebirth = Value
+        autoRebirth()
+	end 
+    
+})
+
+Tab:AddToggle({
+	Name = "AUTO GEM",
+	Default = false,
+	Callback = function(Value)
+		_G.autoEvent = Value
+        autoEvent()
+	end 
+    
+})
+
+Tab:AddToggle({
+	Name = "AUTO XP",
+	Default = false,
+	Callback = function(Value)
+		_G.autoXp = Value
+        autoXp()
+	end 
+    
+})
+
+Tab:AddToggle({
+	Name = "AUTO OPEN DESERT",
+	Default = false,
+	Callback = function(Value)
+		_G.autoOpenDesert = Value
+        autoOpenDesert()
+	end 
+    
+})
