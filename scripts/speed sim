@@ -2,7 +2,7 @@
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Speed Sim", HidePremium = false, IntroEnabled = false, SaveConfig = true, ConfigFolder = "test"})
-
+local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
 
 --values
 
@@ -13,6 +13,7 @@ _G.autoXp = true
 _G.autoBlue = true
 _G.autoOrange = true 
 _G.autoOpenDesert = true
+_G.redRing = true
 
 --functions
 function autoTap()
@@ -67,6 +68,15 @@ function autoOpenDesert()
         wait(0.00000000000000000001)
      end
 	end	
+
+ function redRing()
+    while _G.redRing == true do
+      rootPart.CFrame = workspace.Hoops:GetChildren()[11].CFrame
+        wait(0.5)
+      rootPart.CFrame = workspace.SpawnLocation.CFrame
+      wait(0.1)
+     end
+	end	   
 -- tabs
 
 local Tab = Window:MakeTab({
@@ -143,6 +153,16 @@ Tab:AddToggle({
 	Callback = function(Value)
 		_G.autoOpenDesert = Value
         autoOpenDesert()
+	end 
+    
+})
+
+Tab:AddToggle({
+	Name = "RED RING",
+	Default = false,
+	Callback = function(Value)
+		_G.redRing = Value
+        redRing()
 	end 
     
 })
