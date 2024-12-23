@@ -1,4 +1,4 @@
-
+-- set auto collect to wherever you are, eg. "City" is world 1
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Speed Sim", HidePremium = false, IntroEnabled = false, SaveConfig = true, ConfigFolder = "test"})
@@ -159,8 +159,15 @@ function autoBlue()
 
 
  --ALL DESERT FEATURES
-
  
+ 
+ function autoRebirth()
+	while _G.autoRebirth do
+		game:GetService("ReplicatedStorage").rEvents.rebirthEvent:FireServer("rebirthRequest")
+		wait(0.05)
+	 end
+	end
+
  function autoOpenDesert()
     while _G.autoOpenDesert == true do
       game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer("openCrystal","Electro Crystal")
