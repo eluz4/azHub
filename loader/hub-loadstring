@@ -1,10 +1,4 @@
---checks game id, runs the script based on which game.
 
-if game.PlaceId == 17295102749 then
-
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/eluz4/azHub/refs/heads/main/scripts/Clicking%20Universe'))()
-
-end
 
 if game.PlaceId == 3101667897 then 
 
