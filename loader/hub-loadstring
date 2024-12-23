@@ -1,4 +1,4 @@
-
+-- checks game id, runs the coresponding script :P
 
 if game.PlaceId == 3101667897 then 
 
