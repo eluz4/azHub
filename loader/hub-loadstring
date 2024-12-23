@@ -1,4 +1,4 @@
---clicking universe 
+--checks game id, runs the script based on which game.
 
 if game.PlaceId == 17295102749 then
 
@@ -14,4 +14,6 @@ end
 
 if game.PlaceId == 13667319624 then 
 
-    loadstring(game:HttpGet(''))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/eluz4/azHub/refs/heads/main/scripts/knockout'))()
+
+end
