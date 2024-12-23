@@ -6,8 +6,12 @@ if game.PlaceId == 17295102749 then
 
 end
 
-if game.Placeid == 3101667897 then 
+if game.PlaceId == 3101667897 then 
 
-    loadstring(game:HttpGet(''))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/eluz4/azHub/refs/heads/main/scripts/speed%20sim'))()
 
 end
+
+if game.PlaceId == 13667319624 then 
+
+    loadstring(game:HttpGet(''))()
