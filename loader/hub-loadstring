@@ -6,8 +6,8 @@ if game.PlaceId == 17295102749 then
 
 end
 
-if game.PlaceId == 13127800756 then 
+if game.Placeid == 3101667897 then 
 
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/eluz4/azHub/refs/heads/main/scripts/arm%20wrestling'))()
+    loadstring(game:HttpGet(''))()
 
 end
