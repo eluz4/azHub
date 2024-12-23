@@ -98,13 +98,3 @@ local Input = Tab:CreateInput({
     end,
 })
 
-local selectedPower = "Name of power"
-local powerValue = 0
-
-local function buyPowerEvent()
-    local args = {
-        [1] = selectedPower,
-        [2] = powerValue
-    }
-    game:GetService("ReplicatedStorage"):WaitForChild("Event"):WaitForChild("BuyPower"):FireServer(unpack(args))
-end
