@@ -9,7 +9,6 @@ _G.autoEvent = true
 _G.autoXp = true
 _G.autoBlue = true
 _G.autoOrange = true
-_G.ring1 = true
 _G.openCity = true
 
 -- desert
@@ -19,10 +18,10 @@ _G.orange2 = true
 _G.xp2 = true
 _G.gem2 = true
 _G.autoOpenDesert = true
-_G.ring2 = true
 
 -- misc
 _G.autoRebirth = true
+_G.ring1 = true
 
 -- ALL CITY FEATURES
 function autoTap()
