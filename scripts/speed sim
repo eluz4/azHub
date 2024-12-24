@@ -1,23 +1,18 @@
-
-
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = " Az Speed Sim", HidePremium = false, IntroEnabled = false, SaveConfig = true, ConfigFolder = "test"})
+local Window = OrionLib:MakeWindow({Name = "Speed Sim", HidePremium = false, IntroEnabled = false, SaveConfig = true, ConfigFolder = "test"})
 local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
 
---values
---city
-
+-- Values
+-- city
 _G.autoTap = true
 _G.autoEvent = true
 _G.autoXp = true
 _G.autoBlue = true
-_G.autoOrange = true 
+_G.autoOrange = true
 _G.ring1 = true
 _G.openCity = true
 
-
---desert
-
+-- desert
 _G.red2 = true
 _G.blue2 = true
 _G.orange2 = true
@@ -26,320 +21,261 @@ _G.gem2 = true
 _G.autoOpenDesert = true
 _G.ring2 = true
 
---misc
-
+-- misc
 _G.autoRebirth = true
 
---ALL CITY FEATURES
-
+-- ALL CITY FEATURES
 function autoTap()
     while _G.autoTap == true do
-      game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Red Orb","City")
+        game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
         wait(0.00000000000000000001)
-     end
     end
-	
-function autoEvent()	
-	while _G.autoEvent do
-		game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Gem","City") 
-		wait(0.00000000000000000001) 
+end
 
-	 end
-	end
+function autoEvent()
+    while _G.autoEvent do
+        game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Gem", "City")
+        wait(0.00000000000000000001)
+    end
+end
 
-function autoXp()	
-	while _G.autoXp do
-		game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Yellow Orb","City") 
-		wait(0.00000000000000000001) 
+function autoXp()
+    while _G.autoXp do
+        game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Yellow Orb", "City")
+        wait(0.00000000000000000001)
+    end
+end
 
-	 end
-	end  
+function autoOrange()
+    while _G.autoOrange do
+        game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Orange Orb", "City")
+        wait(0.00000000000000000001)
+    end
+end
 
-function autoOrange()	
-	while _G.autoOrange do
-		game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Orange Orb","City") 
-		wait(0.00000000000000000001) 
+function autoBlue()
+    while _G.autoBlue do
+        game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Blue Orb", "City")
+        wait(0.00000000000000000001)
+    end
+end
 
-	 end
-	end   
-
-function autoBlue()	
-	while _G.autoBlue do
-		game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Blue Orb","City") 
-		wait(0.00000000000000000001) 
-
-	 end
-	end
-
-    function ring1()
-        while _G.ring1 == true do
-          rootPart.CFrame = workspace.Hoops:GetChildren()[12].CFrame
+-- ring1 function
+function ring1()
+    while _G.ring1 == true do
+        for _, hoop in ipairs(workspace.Hoops:GetChildren()) do
+            rootPart.CFrame = hoop.CFrame
             wait(0.1)
             rootPart.CFrame = workspace.SpawnLocation.CFrame
             wait(0.5)
-            rootPart.CFrame = workspace.Hoops:GetChildren()[11].CFrame
-            wait(0.1)
-            rootPart.CFrame = workspace.SpawnLocation.CFrame
-            wait(0.5)
-            rootPart.CFrame = workspace.Hoops.Hoop.CFrame
-            wait(0.1)
-            rootPart.CFrame = workspace.SpawnLocation.CFrame
-            wait(0.5)
-
         end
     end
+end
 
-        
-    local cityTab = Window:MakeTab({
-        Name = "City Farm",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-    })
-    
-    cityTab:AddToggle({
-        Name = "Red Orb",
-        Default = false,
-        Callback = function(Value)
-            _G.autoTap = Value
-            autoTap()
-        end 
-        
-    })
+local cityTab = Window:MakeTab({
+    Name = "City Farm",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
 
-    cityTab:AddToggle({
-        Name = "Orange Orb",
-        Default = false,
-        Callback = function(Value)
-            _G.autoOrange = Value
-            autoOrange()
-        end 
-        
-    })
+cityTab:AddToggle({
+    Name = "Red Orb",
+    Default = false,
+    Callback = function(Value)
+        _G.autoTap = Value
+        autoTap()
+    end
+})
 
-    cityTab:AddToggle({
-        Name = "Blue Orb",
-        Default = false,
-        Callback = function(Value)
-            _G.autoBlue = Value
-            autoBlue()
-        end 
-        
-    })
+cityTab:AddToggle({
+    Name = "Orange Orb",
+    Default = false,
+    Callback = function(Value)
+        _G.autoOrange = Value
+        autoOrange()
+    end
+})
 
-    cityTab:AddToggle({
-        Name = "Auto Gem Farm",
-        Default = false,
-        Callback = function(Value)
-            _G.autoEvent = Value
-            autoEvent()
-        end 
-        
-    })
+cityTab:AddToggle({
+    Name = "Blue Orb",
+    Default = false,
+    Callback = function(Value)
+        _G.autoBlue = Value
+        autoBlue()
+    end
+})
 
-    cityTab:AddToggle({
-        Name = "Auto XP Farm",
-        Default = false,
-        Callback = function(Value)
-            _G.autoXp = Value
-            autoXp()
-        end 
-        
-    })
+cityTab:AddToggle({
+    Name = "Auto Gem Farm",
+    Default = false,
+    Callback = function(Value)
+        _G.autoEvent = Value
+        autoEvent()
+    end
+})
 
-    cityTab:AddToggle({
-        Name = "Auto Rings",
-        Default = false,
-        Callback = function(Value)
-            _G.ring1 = Value
-            ring1()
-        end 
-        
-    })
+cityTab:AddToggle({
+    Name = "Auto XP Farm",
+    Default = false,
+    Callback = function(Value)
+        _G.autoXp = Value
+        autoXp()
+    end
+})
 
+-- ALL DESERT FEATURES
+function autoRebirth()
+    while _G.autoRebirth do
+        game:GetService("ReplicatedStorage").rEvents.rebirthEvent:FireServer("rebirthRequest")
+        wait(0.05)
+    end
+end
 
-
- --ALL DESERT FEATURES
- 
- 
- function autoRebirth()
-	while _G.autoRebirth do
-		game:GetService("ReplicatedStorage").rEvents.rebirthEvent:FireServer("rebirthRequest")
-		wait(0.05)
-	 end
-	end
-
- function autoOpenDesert()
+function autoOpenDesert()
     while _G.autoOpenDesert == true do
-      game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer("openCrystal","Electro Crystal")
+        game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer("openCrystal", "Electro Crystal")
         wait(0.00000000000000000001)
-     end
-	end	
+    end
+end
 
- function red2()
-	while _G.red2 == true do
-	game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Red Orb","Desert")
-		wait(0.00000000000000000001)
-	 end
-    end 
-    
-    function orange2()
-        while _G.orange2 == true do
-        game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Orange Orb","Desert")
-            wait(0.00000000000000000001)
-         end
-        end 
+function red2()
+    while _G.red2 == true do
+        game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "Desert")
+        wait(0.00000000000000000001)
+    end
+end
 
-        function blue2()
-            while _G.blue2 == true do
-            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Blue Orb","Desert")
-                wait(0.00000000000000000001)
-             end
-            end
+function orange2()
+    while _G.orange2 == true do
+        game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Orange Orb", "Desert")
+        wait(0.00000000000000000001)
+    end
+end
 
-            function xp2()
-                while _G.xp2 == true do
-                game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Yellow Orb","Desert")
-                    wait(0.00000000000000000001)
-                 end
-                end
+function blue2()
+    while _G.blue2 == true do
+        game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Blue Orb", "Desert")
+        wait(0.00000000000000000001)
+    end
+end
 
-                function gem2()
-                    while _G.gem2 == true do
-                    game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb","Gem","Desert")
-                        wait(0.00000000000000000001)
-                     end
-                    end
+function xp2()
+    while _G.xp2 == true do
+        game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Yellow Orb", "Desert")
+        wait(0.00000000000000000001)
+    end
+end
 
-                    function ring2()
-                        while _G.ring2 == true do
-                          rootPart.CFrame = workspace.Hoops:GetChildren()[21].CFrame
-                            wait(0.1)
-                            rootPart.CFrame = workspace.SpawnLocation.CFrame
-                            wait(0.5)
-                            rootPart.CFrame = workspace.Hoops:GetChildren()[8].CFrame
-                            wait(0.1)
-                            rootPart.CFrame = workspace.SpawnLocation.CFrame
-                            wait(0.5)
-                            rootPart.CFrame = workspace.Hoops:GetChildren()[18].CFrame
-                            wait(0.1)
-                            rootPart.CFrame = workspace.SpawnLocation.CFrame
-                            wait(0.5)
-                            rootPart.CFrame = workspace.Hoops:GetChildren()[5].CFrame
-                            wait(0.1)
-                            rootPart.CFrame = workspace.SpawnLocation.CFrame
-                            wait(0.5)
-
-                        end
-                    end
+function gem2()
+    while _G.gem2 == true do
+        game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Gem", "Desert")
+        wait(0.00000000000000000001)
+    end
+end
 
 local desertTab = Window:MakeTab({
-	Name = "Desert Farm",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+    Name = "Desert Farm",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
 })
 
 desertTab:AddToggle({
-	Name = "Red Orb",
-	Default = false,
-	Callback = function(Value)
-		_G.red2 = Value
+    Name = "Red Orb",
+    Default = false,
+    Callback = function(Value)
+        _G.red2 = Value
         red2()
-	end 
-    
+    end
 })
 
 desertTab:AddToggle({
-	Name = "Orange Orb",
-	Default = false,
-	Callback = function(Value)
-		_G.orange2 = Value
+    Name = "Orange Orb",
+    Default = false,
+    Callback = function(Value)
+        _G.orange2 = Value
         orange2()
-	end 
-    
+    end
 })
 
 desertTab:AddToggle({
-	Name = "Blue Orb",
-	Default = false,
-	Callback = function(Value)
-		_G.blue2 = Value
+    Name = "Blue Orb",
+    Default = false,
+    Callback = function(Value)
+        _G.blue2 = Value
         blue2()
-	end 
-    
+    end
 })
 
 desertTab:AddToggle({
-	Name = "Auto Gem Farm",
-	Default = false,
-	Callback = function(Value)
-		_G.gem2 = Value
+    Name = "Auto Gem Farm",
+    Default = false,
+    Callback = function(Value)
+        _G.gem2 = Value
         gem2()
-	end 
-    
+    end
 })
 
 desertTab:AddToggle({
-	Name = "Auto XP Farm",
-	Default = false,
-	Callback = function(Value)
-		_G.xp2 = Value
+    Name = "Auto XP Farm",
+    Default = false,
+    Callback = function(Value)
+        _G.xp2 = Value
         xp2()
-	end 
-    
+    end
 })
 
-desertTab:AddToggle({
-	Name = "Auto Rings",
-	Default = false,
-	Callback = function(Value)
-		_G.ring2 = Value
-        ring2()
-	end 
-    
-})
-
---EGGS
-
+-- Eggs Tab
 local eggTab = Window:MakeTab({
-	Name = "Eggs",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+    Name = "Eggs",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
 })
 
 eggTab:AddToggle({
-	Name = "Desert Auto Open",
-	Default = false,
-	Callback = function(Value)
-		_G.autoOpenDesert = Value
+    Name = "Desert Auto Open",
+    Default = false,
+    Callback = function(Value)
+        _G.autoOpenDesert = Value
         autoOpenDesert()
-	end 
-    
+    end
 })
 
---MISC
-
+-- Misc Tab
 local miscTab = Window:MakeTab({
-	Name = "Misc.",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+    Name = "Misc.",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
 })
 
 miscTab:AddToggle({
-	Name = "Auto Rebirth",
-	Default = false,
-	Callback = function(Value)
-		_G.autoRebirth = Value
+    Name = "Auto Rebirth",
+    Default = false,
+    Callback = function(Value)
+        _G.autoRebirth = Value
         autoRebirth()
-	end 
-    
+    end
 })
 
-                        
+miscTab:AddToggle({
+    Name = "Auto Rings",
+    Default = false,
+    Callback = function(Value)
+        _G.ring1 = Value
+        ring1()
+    end
+})
 
+miscTab:AddButton({
+	Name = "Turtle Spy",
+	Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Turtle%20Spy.lua"))()	
+  	end    
+})
 
+miscTab:AddButton({
+	Name = "Infinite Yeild",
+	Callback = function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
 
-        
-        
-
-
-
+  	end    
+})
