@@ -101,6 +101,13 @@ function autoOpenDesert()
     end
 end
 
+function autoRebirth()
+    while _G.autoRebirth do
+        game:GetService("ReplicatedStorage").rEvents.rebirthEvent:FireServer("rebirthRequest")
+        wait(0.05)
+    end
+end
+
 -- ring tp system
 function rings()
     while _G.rings == true do
@@ -163,13 +170,6 @@ cityTab:AddToggle({
         xp1()
     end
 })
-
-function autoRebirth()
-    while _G.autoRebirth do
-        game:GetService("ReplicatedStorage").rEvents.rebirthEvent:FireServer("rebirthRequest")
-        wait(0.05)
-    end
-end
 
 --ui
 
