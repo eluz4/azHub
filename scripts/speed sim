@@ -279,3 +279,35 @@ miscTab:AddButton({
 
   	end    
 })
+
+-- teleports tab
+
+local miscTab = Window:MakeTab({
+    Name = "Teleports",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+miscTab:AddButton({
+	Name = "Snow City",
+	Callback = function()
+    rootPart.CFrame = workspace:GetChildren()[2102].CFrame
+
+  	end    
+})
+
+miscTab:AddButton({
+	Name = "Magma City",
+	Callback = function()
+    rootPart.CFrame = workspace:GetChildren()[3021].CFrame
+
+  	end    
+})
+
+miscTab:AddButton({
+	Name = "Desert World Prompt",
+	Callback = function()
+    rootPart.CFrame = workspace.areaCircles:GetChildren()[22].circleInner.CFrame
+
+  	end    
+})
