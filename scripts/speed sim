@@ -1,4 +1,4 @@
---azure my goat for helping me :salute:
+-- azure my goat for helping me :salute:
 
 if game:IsLoaded() then
     print("Loaded.. Executing Script")
@@ -9,6 +9,8 @@ end
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Legends Of Speed", HidePremium = false, IntroEnabled = true, SaveConfig = true, ConfigFolder = "test"})
 local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+local player = game.Players.LocalPlayer
+local humanoid = player.Character:FindFirstChild("Humanoid")
 
 local G = {
     City = {
@@ -29,10 +31,24 @@ local G = {
     Misc = {
         ring1 = false,
         autoRebirth = false,
+        speed = 1000, 
+        jumpHeight = 250, 
+        ringSpeed = 0.1, 
     }
 }
 
--- functions 
+local function applySettings()
+    if humanoid then
+        humanoid.WalkSpeed = G.Misc.speed
+        humanoid.JumpPower = G.Misc.jumpHeight
+    end
+end
+
+applySettings()
+
+
+-- function start
+
 
 spawn(function()
     while true do
@@ -73,8 +89,6 @@ spawn(function()
     end
 end)
 
--- own sections for these so they have different timings.
-
 spawn(function()
     while true do
         if G.Misc.autoRebirth then
@@ -89,16 +103,19 @@ spawn(function()
         if G.Misc.ring1 then
             for _, hoop in ipairs(workspace.Hoops:GetChildren()) do
                 rootPart.CFrame = hoop.CFrame
-                task.wait(0.1)
+                task.wait(G.Misc.ringSpeed)
                 rootPart.CFrame = workspace.SpawnLocation.CFrame
-                task.wait(0.1)
+                task.wait(G.Misc.ringSpeed)
             end
         end
         task.wait(0.001)
     end
 end)
 
--- ui setup
+
+-- ui start
+
+
 local cityTab = Window:MakeTab({
     Name = "City Farm",
     Icon = "rbxassetid://4483345998",
@@ -254,9 +271,56 @@ miscTab:AddButton({
     end,
 })
 
+local settingsTab = Window:MakeTab({
+    Name = "Settings",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false,
+})
+
+settingsTab:AddSlider({
+    Name = "Speed",
+    Min = 0,
+    Max = 5000,
+    Default = 1000,
+    Color = Color3.fromRGB(0, 0, 0),
+    Increment = 1,
+    ValueName = "Speed",
+    Callback = function(Value)
+        G.Misc.speed = Value
+        applySettings()
+    end,
+})
+
+settingsTab:AddSlider({
+    Name = "Jump Height",
+    Min = 0,
+    Max = 1000,
+    Default = 250,
+    Color = Color3.fromRGB(0, 0, 0),
+    Increment = 1,
+    ValueName = "Jump Power",
+    Callback = function(Value)
+        G.Misc.jumpHeight = Value
+        applySettings()
+    end,
+})
+
+settingsTab:AddSlider({
+    Name = "Ring Delay",
+    Min = 0.01,
+    Max = 0.3,
+    Default = 0.1,
+    Color = Color3.fromRGB(0, 0, 0),
+    Increment = 0.01,
+    ValueName = "Seconds",
+    Callback = function(Value)
+        G.Misc.ringSpeed = Value
+    end,
+})
+
 OrionLib:MakeNotification({
     Name = "made by az | ty azure for the help :o",
     Content = "@ me in tekkit if theres problems ty",
     Image = "rbxassetid://4483345998",
-    Time = 15
+    Time = 25
 })
