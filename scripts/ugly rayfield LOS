@@ -240,7 +240,7 @@ MiscTab:CreateButton({
 })
 
 Rayfield:Notify({
-    Title = "@ me on discord if theres problems",
+    Title = "@me if issue",
     Content = "semi-slow updates on this ver, i hate reyfield.",
     Duration = 25,
     Image = 4483345998,
