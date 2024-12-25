@@ -1,0 +1,247 @@
+--same script ported to rayfield if u prefer this ugly ass ui
+
+if game:IsLoaded() then
+    print("Loaded, Executing Script.")
+else
+    game.Loaded:Wait()
+end
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Window = Rayfield:CreateWindow({
+    Name = "Legends Of Speed",
+    LoadingTitle = "enjoy ;o",
+    LoadingSubtitle = "By Az | Helped by Azure",
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = "AzSpeedLegends",
+        FileName = "TestConfig"
+    },
+    KeySystem = false, 
+})
+
+local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+local G = {
+    City = {
+        red = false,
+        blue = false,
+        orange = false,
+        xp = false,
+        gem = false,
+    },
+    Desert = {
+        red = false,
+        blue = false,
+        orange = false,
+        xp = false,
+        gem = false,
+        openCrystal = false,
+    },
+    Misc = {
+        autoRings = false,
+        autoRebirth = false,
+    },
+}
+
+spawn(function()
+    while true do
+        if G.City.red1 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+        end
+        if G.City.blue1 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Blue Orb", "City")
+        end
+        if G.City.orange1 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Orange Orb", "City")
+        end
+        if G.City.xp1 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Yellow Orb", "City")
+        end
+        if G.City.gem1 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Gem", "City")
+        end
+        if G.Desert.red2 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "Desert")
+        end
+        if G.Desert.blue2 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Blue Orb", "Desert")
+        end
+        if G.Desert.orange2 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Orange Orb", "Desert")
+        end
+        if G.Desert.xp2 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Yellow Orb", "Desert")
+        end
+        if G.Desert.gem2 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Gem", "Desert")
+        end
+        if G.Desert.OpenDesert then
+            game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer("openCrystal", "Electro Crystal")
+        end
+        task.wait(0.001)
+    end
+end)
+
+spawn(function()
+    while true do
+        if G.Misc.autoRebirth then
+            game:GetService("ReplicatedStorage").rEvents.rebirthEvent:FireServer("rebirthRequest")
+        end
+        task.wait(0.5)
+    end
+end)
+
+spawn(function()
+    while true do
+        if G.Misc.ring1 then
+            for _, hoop in ipairs(workspace.Hoops:GetChildren()) do
+                rootPart.CFrame = hoop.CFrame
+                task.wait(0.1)
+                rootPart.CFrame = workspace.SpawnLocation.CFrame
+                task.wait(0.1)
+            end
+        end
+        task.wait(0.001)
+    end
+end)
+
+local CityTab = Window:CreateTab("City Farm", 4483345998)
+
+CityTab:CreateToggle({
+    Name = "Red Orb",
+    CurrentValue = false,
+    Callback = function(Value)
+        G.City.red1 = Value
+    end,
+})
+
+CityTab:CreateToggle({
+    Name = "Blue Orb",
+    CurrentValue = false,
+    Callback = function(Value)
+        G.City.blue1 = Value
+    end,
+})
+
+CityTab:CreateToggle({
+    Name = "Orange Orb",
+    CurrentValue = false,
+    Callback = function(Value)
+        G.City.orange1 = Value
+    end,
+})
+
+CityTab:CreateToggle({
+    Name = "XP Farm",
+    CurrentValue = false,
+    Callback = function(Value)
+        G.City.xp1 = Value
+    end,
+})
+
+CityTab:CreateToggle({
+    Name = "Gem Farm",
+    CurrentValue = false,
+    Callback = function(Value)
+        G.City.gem1 = Value
+    end,
+})
+
+local DesertTab = Window:CreateTab("Desert Farm", 4483345998)
+
+DesertTab:CreateToggle({
+    Name = "Red Orb",
+    CurrentValue = false,
+    Callback = function(Value)
+        G.Desert.red2 = Value
+    end,
+})
+
+DesertTab:CreateToggle({
+    Name = "Blue Orb",
+    CurrentValue = false,
+    Callback = function(Value)
+        G.Desert.blue2 = Value
+    end,
+})
+
+DesertTab:CreateToggle({
+    Name = "Orange Orb",
+    CurrentValue = false,
+    Callback = function(Value)
+        G.Desert.orange2 = Value
+    end,
+})
+
+DesertTab:CreateToggle({
+    Name = "XP Farm",
+    CurrentValue = false,
+    Callback = function(Value)
+        G.Desert.xp2 = Value
+    end,
+})
+
+DesertTab:CreateToggle({
+    Name = "Gem Farm",
+    CurrentValue = false,
+    Callback = function(Value)
+        G.Desert.gem2 = Value
+    end,
+})
+
+local TeleportsTab = Window:CreateTab("Teleports", 4483345998)
+
+TeleportsTab:CreateButton({
+    Name = "Desert World Prompt",
+    Callback = function()
+        rootPart.CFrame = workspace.areaCircles:GetChildren()[22].circleInner.CFrame
+    end,
+})
+
+local EggTab = Window:CreateTab("Eggs", 4483345998)
+
+EggTab:CreateToggle({
+    Name = "Open Desert",
+    CurrentValue = false,
+    Callback = function(Value)
+        G.Desert.OpenDesert = Value
+    end,
+})
+
+local MiscTab = Window:CreateTab("Misc.", 4483345998)
+
+MiscTab:CreateToggle({
+    Name = "Auto Rebirth",
+    CurrentValue = false,
+    Callback = function(Value)
+        G.Misc.autoRebirth = Value
+    end,
+})
+
+MiscTab:CreateToggle({
+    Name = "Auto Rings",
+    CurrentValue = false,
+    Callback = function(Value)
+        G.Misc.ring1 = Value
+    end,
+})
+
+MiscTab:CreateButton({
+    Name = "Turtle Spy",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ltseverydayyou/uuuuuuu/main/Turtle%20Spy.lua"))()
+    end,
+})
+
+MiscTab:CreateButton({
+    Name = "Infinite Yield",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end,
+})
+
+Rayfield:Notify({
+    Title = "Script Loaded",
+    Content = "enjoy, @ me in tekkit if issues.",
+    Duration = 5,
+    Image = 4483345998,
+})
