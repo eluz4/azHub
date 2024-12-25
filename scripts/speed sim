@@ -1,3 +1,5 @@
+--azure my goat for helping me :salute:
+
 if game:IsLoaded() then
     print("Loaded.. Executing Script")
 else
