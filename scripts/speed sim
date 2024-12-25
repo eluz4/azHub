@@ -7,7 +7,7 @@ else
 end
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Az Speed Legends", HidePremium = false, IntroEnabled = true, SaveConfig = true, ConfigFolder = "test"})
+local Window = OrionLib:MakeWindow({Name = "Legends Of Speed", HidePremium = false, IntroEnabled = true, SaveConfig = true, ConfigFolder = "test"})
 local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
 
 local G = {
@@ -255,7 +255,7 @@ miscTab:AddButton({
 })
 
 OrionLib:MakeNotification({
-    Name = "THIS IS A COMPLETE REWRITE",
+    Name = "made by az | ty azure for the help :o",
     Content = "@ me in tekkit if theres problems ty",
     Image = "rbxassetid://4483345998",
     Time = 15
