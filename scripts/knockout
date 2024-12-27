@@ -6,7 +6,7 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
     Name = "ion even know fr",
     Icon = 0,
-    LoadingTitle = "AzHUB",
+    LoadingTitle = "Knockout Sim",
     LoadingSubtitle = "by eluza",
     Theme = "Default",
 
@@ -41,8 +41,8 @@ local Tab = Window:CreateTab("Main", 4483362458)
 local Section = Tab:CreateSection("Main stuff")
 
 Rayfield:Notify({
-    Title = "ty shi",
-    Content = "tt .azule",
+    Title = "type shit",
+    Content = "rayfieldK",
     Duration = 6.5,
     Image = 4483362458,
 })
