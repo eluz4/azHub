@@ -1,3 +1,6 @@
+-- only used this to test out rayfield, kinda ass.
+-- infinite strength / wins
+
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
