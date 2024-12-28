@@ -1,26 +1,18 @@
 -- THIS IS MAINLY FOR THE AOT:R "DEATHS DOOR" ACHIEVEMENT
--- BUT YOU CAN USE IT AND TWEAK IT FOR WHATEVER YOU WANT
+-- CAN BE USED FOR WHATEVER YOU WOULD LIKE IT FOR.
 
-local Players = game:GetService("Players")
-local StarterGui = game:GetService("StarterGui")
-local player = Players.LocalPlayer
-local plrname = player.Name
-local char = workspace:WaitForChild("Characters"):WaitForChild(plrname)
-local humanoid = char:WaitForChild("Humanoid")
+local player = game.Players.LocalPlayer
+local humanoid = workspace.Characters[player.Name].Humanoid
+local gui = game.StarterGui
 
-local function updateNotification()
-    local hp = humanoid.Health
-    local maxhp = humanoid.MaxHealth
-    local percentHP = (hp / maxhp) * 100
-    local notificationText = string.format("You're at %.1f%% HP", percentHP)
-    
-    StarterGui:SetCore("SendNotification", {
+local function notifyHealth()
+    gui:SetCore("SendNotification", {
         Title = "HP",
-        Text = notificationText,
-        Duration = 50, 
+        Text = string.format("You're at %.1f%% HP", (humanoid.Health / humanoid.MaxHealth) * 100),
+        Duration = 50,
     })
 end
 
-humanoid:GetPropertyChangedSignal("Health"):Connect(updateNotification)
+humanoid:GetPropertyChangedSignal("Health"):Connect(notifyHealth)
 
-updateNotification()
+notifyHealth()
