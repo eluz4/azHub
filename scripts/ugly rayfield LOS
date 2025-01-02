@@ -1,4 +1,5 @@
 --same script ported to rayfield if u prefer this ugly ass ui
+--probably wont update this often
 
 if game:IsLoaded() then
     print("Loaded, Executing Script.")
