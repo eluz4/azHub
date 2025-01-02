@@ -28,6 +28,14 @@ local G = {
         gem2 = false,
         OpenDesert = false,
     },
+    Space = {
+        red3 = false,
+        blue3 = false,
+        orange3 = false,
+        xp3 = false,
+        gem3 = false,
+        OpenSpace = false,
+    },
     Misc = {
         ring1 = false,
         autoRebirth = false,
@@ -84,6 +92,24 @@ spawn(function()
         end
         if G.Desert.OpenDesert then
             game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer("openCrystal", "Electro Crystal")
+        end
+        if G.Space.red3 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "Space")
+        end
+        if G.Space.blue3 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Blue Orb", "Space")
+        end
+        if G.Space.orange3 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Orange Orb", "Space")
+        end
+        if G.Space.xp3 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Yellow Orb", "Space")
+        end
+        if G.Space.gem3 then
+            game:GetService("ReplicatedStorage").rEvents.orbEvent:FireServer("collectOrb", "Gem", "Space")
+        end
+        if G.Space.OpenSpace then
+            game:GetService("ReplicatedStorage").rEvents.openCrystalRemote:InvokeServer("openCrystal","Alien Crystal")
         end
         task.wait(0.001)
     end
@@ -208,6 +234,52 @@ desertTab:AddToggle({
     end,
 })
 
+local spaceTab = Window:MakeTab({
+    Name = "Space Farm",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false,
+})
+
+spaceTab:AddToggle({
+    Name = "Red Orb",
+    Default = false,
+    Callback = function(Value)
+        G.Space.red3 = Value
+    end,
+})
+
+spaceTab:AddToggle({
+    Name = "Blue Orb",
+    Default = false,
+    Callback = function(Value)
+        G.Space.blue3 = Value
+    end,
+})
+
+spaceTab:AddToggle({
+    Name = "Orange Orb",
+    Default = false,
+    Callback = function(Value)
+        G.Space.orange3 = Value
+    end,
+})
+
+spaceTab:AddToggle({
+    Name = "XP Farm",
+    Default = false,
+    Callback = function(Value)
+        G.Space.xp3 = Value
+    end,
+})
+
+spaceTab:AddToggle({
+    Name = "Gem Farm",
+    Default = false,
+    Callback = function(Value)
+        G.Space.gem3 = Value
+    end,
+})
+
 local teleTab = Window:MakeTab({
     Name = "Teleports",
     Icon = "rbxassetid://4483345998",
@@ -232,6 +304,14 @@ eggTab:AddToggle({
     Default = false,
     Callback = function(Value)
         G.Desert.OpenDesert = Value
+    end
+})
+
+eggTab:AddToggle({
+    Name = "Open Space",
+    Default = false,
+    Callback = function(Value)
+        G.Space.OpenSpace = Value
     end
 })
 
