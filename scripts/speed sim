@@ -38,6 +38,7 @@ local G = {
     },
     Misc = {
         ring1 = false,
+        ring2 = false,
         autoRebirth = false,
         speed = 1000, 
         jumpHeight = 250, 
@@ -127,6 +128,20 @@ end)
 spawn(function()
     while true do
         if G.Misc.ring1 then
+            for _, hoop in ipairs(workspace.Hoops:GetChildren()) do
+                rootPart.CFrame = hoop.CFrame
+                task.wait(G.Misc.ringSpeed)
+                rootPart.CFrame = workspace.SpawnLocation.CFrame
+                task.wait(G.Misc.ringSpeed)
+            end
+        end
+        task.wait(0.001)
+    end
+end)
+
+spawn(function()
+    while true do
+        if G.Misc.ring2 then
             for _, hoop in ipairs(workspace.Hoops:GetChildren()) do
                 hoop.CFrame = rootPart.CFrame
                 task.wait(G.Misc.ringSpeed)
@@ -328,10 +343,18 @@ miscTab:AddToggle({
 })
 
 miscTab:AddToggle({
-    Name = "Auto Rings",
+    Name = "TP to Rings",
     Default = false,
     Callback = function(Value)
         G.Misc.ring1 = Value
+    end,
+})
+
+miscTab:AddToggle({
+    Name = "TP Rings to You (could break)",
+    Default = false,
+    Callback = function(Value)
+        G.Misc.ring2 = Value
     end,
 })
 
