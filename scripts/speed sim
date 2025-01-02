@@ -128,9 +128,7 @@ spawn(function()
     while true do
         if G.Misc.ring1 then
             for _, hoop in ipairs(workspace.Hoops:GetChildren()) do
-                rootPart.CFrame = hoop.CFrame
-                task.wait(G.Misc.ringSpeed)
-                rootPart.CFrame = workspace.SpawnLocation.CFrame
+                hoop.CFrame = rootPart.CFrame
                 task.wait(G.Misc.ringSpeed)
             end
         end
