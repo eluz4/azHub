@@ -12,6 +12,12 @@ if game.PlaceId == 3276265788 then
 
 end
 
+if game.PlaceId == 3232996272 then 
+
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/eluz4/azHub/refs/heads/main/scripts/speed%20sim'))()
+
+end
+
 if game.PlaceId == 13667319624 then 
 
     loadstring(game:HttpGet('https://raw.githubusercontent.com/eluz4/azHub/refs/heads/main/scripts/knockout'))()
