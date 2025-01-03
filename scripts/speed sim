@@ -11,6 +11,12 @@ local Window = OrionLib:MakeWindow({Name = "Legends Of Speed", HidePremium = fal
 local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
 local player = game.Players.LocalPlayer
 local humanoid = player.Character:FindFirstChild("Humanoid")
+local VirtualUser = game:GetService("VirtualUser")
+
+game:GetService("Players").LocalPlayer.Idled:Connect(function()
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new(0, 0)) 
+end)
 
 local G = {
     City = {
